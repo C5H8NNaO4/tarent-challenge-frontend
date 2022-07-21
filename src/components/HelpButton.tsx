@@ -127,10 +127,6 @@ export const HelpButton = () => {
                                 picker and upon confirmation the time will be
                                 updated. You can not delete slots that are
                                 booked.
-                                <i>
-                                    (You can however modify booked slots which
-                                    will render existing bookings obsolete.)
-                                </i>
                             </Typography>
                         </CardContent>
                     </AccordionDetails>
