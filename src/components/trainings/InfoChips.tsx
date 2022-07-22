@@ -1,4 +1,7 @@
-import { Chip, Grid, TextField } from '@mui/material';
+import { Chip, Grid } from '@mui/material';
+
+import { CostTextField } from './CostTextField';
+import { DurationTextField } from './DurationTextField';
 
 import { useBookings } from '../../lib/data';
 import { CostChip } from '../CostChip';
@@ -32,22 +35,15 @@ export const InfoChips: React.FC<InfoChips> = ({
         <Grid container spacing={1}>
             <Grid item>
                 {editMode ? (
-                    <TextField
-                        onChange={(e) => onChangeCost(Number(e.target.value))}
-                        type="number"
-                        value={cost}
-                    />
+                    <CostTextField onChange={onChangeCost} value={cost} />
                 ) : (
-                    <CostChip cost={cost} />
+                    <CostChip value={cost} />
                 )}
             </Grid>
             <Grid item>
                 {editMode ? (
-                    <TextField
-                        onChange={(e) =>
-                            onChangeDuration(Number(e.target.value))
-                        }
-                        type="number"
+                    <DurationTextField
+                        onChange={onChangeDuration}
                         value={duration}
                     />
                 ) : (

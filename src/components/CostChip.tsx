@@ -8,21 +8,21 @@ import { useConvertCurrency } from '../lib/hooks';
 import { getLanguageCurrencySymbol } from '../lib/util';
 
 interface CostChipProps {
-    cost: number;
+    value: number;
 }
 
-export const CostChip: React.FC<CostChipProps> = ({ cost }) => {
-    const convertedCost = useConvertCurrency(cost);
+export const CostChip: React.FC<CostChipProps> = ({ value }) => {
+    const convertedCost = useConvertCurrency(value);
     const { t } = useTranslation();
 
     const title = t('COST_CONVERSION', {
-        cost,
+        cost: value,
         convertedCost,
         symbol: getLanguageCurrencySymbol(),
     });
 
     return (
-        <Tooltip title={cost === convertedCost ? '' : title}>
+        <Tooltip title={value === convertedCost ? '' : title}>
             <Chip
                 icon={<CostIcon />}
                 label={numeral(convertedCost).format('0$')}
