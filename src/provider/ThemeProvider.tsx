@@ -1,4 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
+import { Theme } from '@mui/material';
+import {
+    ThemeProvider as MUIThemeProvider,
+    createTheme,
+} from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import React, {
     PropsWithChildren,
     FunctionComponent,
@@ -6,15 +12,10 @@ import React, {
     useMemo,
     useState,
 } from 'react';
-import { Theme } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import {
-    ThemeProvider as MUIThemeProvider,
-    createTheme,
-} from '@mui/material/styles';
-import defaultTheme from '../lib/theme';
+
 import darkTheme from '../lib/darkTheme';
 import lightTheme from '../lib/lightTheme';
+import defaultTheme from '../lib/theme';
 
 const themeContext = React.createContext({});
 

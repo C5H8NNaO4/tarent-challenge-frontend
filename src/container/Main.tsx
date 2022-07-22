@@ -1,17 +1,17 @@
-import { FunctionComponent, PropsWithChildren, useContext } from 'react';
 import clsx from 'clsx';
+import { FunctionComponent, PropsWithChildren, useContext } from 'react';
 
 import { DefaultLayout } from './Layout';
 
-import { StateProvider } from '../provider/StateProvider';
+import { VantaBackground } from '../components/Background';
 import { ErrorBoundary } from '../components/ErrorBoundary';
+import { useSetting } from '../components/Settings';
+import { StateProvider } from '../provider/StateProvider';
 import {
     themeContext,
     ThemeProvider,
     UseThemeResult,
 } from '../provider/ThemeProvider';
-import { VantaBackground } from '../components/Background';
-import { useSetting } from '../components/Settings';
 
 /**
  * Main entry point. Renders providers and the layout.
