@@ -119,6 +119,7 @@ export const TrainingCard: FunctionComponent<TrainingCardProps> = (props) => {
                     onModify={modifyTimeSlot}
                     onDelete={removeTimeSlot}
                     editMode={editMode}
+                    draft={draft}
                 />
             </CardContent>
             <CardActionArea>

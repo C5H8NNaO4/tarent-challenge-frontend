@@ -12,6 +12,7 @@ interface TimeSlotChips {
     onModify(oldSlot: string, newSlot: string): void;
     onDelete(time: string): void;
     editMode: boolean;
+    draft: boolean;
 }
 
 export const TimeSlotChips: React.FC<TimeSlotChips> = ({
@@ -24,6 +25,7 @@ export const TimeSlotChips: React.FC<TimeSlotChips> = ({
     onModify,
     onDelete,
     onAdd,
+    draft,
 }) => {
     return (
         <Grid container spacing={1}>
@@ -42,7 +44,7 @@ export const TimeSlotChips: React.FC<TimeSlotChips> = ({
                     />
                 </Grid>
             ))}
-            {editMode && (
+            {editMode && !draft && (
                 <Grid item>
                     <RemovableTimeSlot
                         trainingId={trainingId}
