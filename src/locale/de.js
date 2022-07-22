@@ -17,15 +17,7 @@ export default {
         en: 'Englisch',
         es: 'Spanisch',
         fr: 'Französisch',
-        DESC_TRAINING_0: `
-Bringen Sie Ihre JavaScript-Kenntnisse mit diesem Einführungskurs für Anfänger auf das nächste Level.
-Sie lernen die Grundlagen von JavaScript sowie fortgeschrittene Programmierpragmas, Datenstrukturen, Gebote und Verbote kennen.`,
-        DESC_TRAINING_1: `
-Hatten Sie jemals Lust, selbst blitzschnelle und beeindruckende Websites zu erstellen?
-Dies ist der richtige Kurs für Sie. Es deckt alles ab, was Sie für den Einstieg in die Entwicklung moderner SPAs zu Hause benötigen.`,
-        DESC_TRAINING_2: `
-Kennen Sie die Vorteile der Typsicherheit? Wenn nicht, sollten Sie sich unbedingt diesen Kurs ansehen.
-Es deckt alle Notwendigkeiten ab, um mit der Entwicklung von robustem Code zu beginnen.
-`,
+        TRAINING_MODIFY_SUCCESS: 'Das Training wurde erfolgreich verändert.',
+        DELETE_TRAINING_SUCCESS: 'Das Training wurde erfolgreich gelöscht.',
     },
 };

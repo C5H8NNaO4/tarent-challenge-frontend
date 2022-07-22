@@ -75,8 +75,9 @@ export const isAnonymousUser = (user: User | null) => {
     return isLoggedIn(user) && user?.id === -1;
 };
 
-export const getLanguageCurrencySymbol = () => {
-    return numeral(0).format('$').slice(2);
+type CurrencySymbol = '€' | '$';
+export const getLanguageCurrencySymbol = (): CurrencySymbol => {
+    return numeral(0).format('$').slice(2) as CurrencySymbol;
 };
 
 export const translate = async (

@@ -7,6 +7,7 @@ import {
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CloseIcon from '@mui/icons-material/Close';
+import EuroIcon from '@mui/icons-material/Euro';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import LanguageIcon from '@mui/icons-material/Language';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -21,4 +22,4 @@ export const DarkIcon = Brightness4Outlined;
 export const OSIcon = DesktopWindowsOutlined;
 
 export const LocationIcon = LocationOnIcon;
-export { FilterListIcon, SettingsIcon, CloseIcon, LanguageIcon };
+export { FilterListIcon, SettingsIcon, CloseIcon, LanguageIcon, EuroIcon };
