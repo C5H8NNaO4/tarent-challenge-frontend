@@ -1,9 +1,11 @@
-import { FunctionComponent } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Paper } from '@mui/material';
 import { Box } from '@mui/system';
+import { FunctionComponent } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import { Header } from './Header';
 import { Routes } from './Routes';
+
 import { ErrorBoundary } from '../components/ErrorBoundary';
 
 export const DefaultLayout: FunctionComponent = () => {

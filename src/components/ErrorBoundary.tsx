@@ -2,6 +2,7 @@
 /* eslint-disable react/state-in-constructor */
 /* eslint-disable react/static-property-placement */
 import React from 'react';
+
 import { TranslatedAlert } from './Translated';
 
 export class ErrorBoundary extends React.Component {

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { FunctionComponent, useContext } from 'react';
+import { WavesRounded } from '@mui/icons-material';
 import {
     ListItemIcon,
     SvgIconTypeMap,
@@ -8,15 +8,16 @@ import {
     SwitchProps,
     Tooltip,
 } from '@mui/material';
-import { WavesRounded } from '@mui/icons-material';
-import clsx from 'clsx';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import clsx from 'clsx';
+import React, { FunctionComponent, useContext } from 'react';
+
 import { BrightIcon, DarkIcon, OSIcon, SettingsIcon, UserIcon } from './Icons';
 import { TranslatedListItemText } from './Translated';
 
 import { useLocalStorage } from '../lib/hooks';
-import { themeContext, UseThemeResult } from '../provider/ThemeProvider';
 import { atoms } from '../lib/static';
+import { themeContext, UseThemeResult } from '../provider/ThemeProvider';
 
 export const useSetting = (
     key: string,

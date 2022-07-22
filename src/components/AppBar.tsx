@@ -1,19 +1,21 @@
 // eslint-disable-next-line no-use-before-define
+import SearchIcon from '@mui/icons-material/Search';
+import { InputAdornment } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import { styled, alpha } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import React, {
     ChangeEventHandler,
     FunctionComponent,
     useContext,
 } from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import SearchIcon from '@mui/icons-material/Search';
-import { InputAdornment } from '@mui/material';
-import { TranslatedTextField } from './Translated';
+
 import { CloseIcon } from './Icons';
+import { TranslatedTextField } from './Translated';
+
 import { Search as SetSearch } from '../lib/actions';
 import { stateContext } from '../provider/StateProvider';
 import { SearchAppBarProps } from '../types';

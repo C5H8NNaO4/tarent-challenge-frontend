@@ -9,24 +9,16 @@ import React, {
     useRef,
 } from 'react';
 
-enum Vanta {
-    CLOUDS,
-    WAVES,
-}
-
 type VANTA = {
     [index: string]: any;
     CLOUDS: any;
     WAVES: any;
 };
-
 declare global {
     interface Window {
         VANTA: VANTA;
     }
 }
-
-let instance: VANTA;
 
 type VantaBackgroudProps = {
     enabled?: boolean;

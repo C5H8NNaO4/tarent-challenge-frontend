@@ -1,23 +1,19 @@
-import { useTranslation } from 'react-i18next';
 import {
-    Alert,
     Box,
-    Button,
     Card,
     CardActionArea,
     CardActions,
     CardContent,
     LinearProgress,
-    TextField,
-    Typography,
 } from '@mui/material';
 import { FunctionComponent, useState } from 'react';
 
-import { TrainingCardHeader } from './TrainingCardHeader';
 import { InfoChips } from './InfoChips';
 import { TimeSlotChips } from './TimeSlotChips';
+import { TrainingActionButtons } from './TrainingActionButtons';
+import { TrainingCardHeader } from './TrainingCardHeader';
+import { TrainingDescription } from './TrainingDescription';
 
-import { BookButton } from '../BookButton';
 import {
     useAddTimeSlot,
     useDeleteTraining,
@@ -26,8 +22,7 @@ import {
     useRemoveTimeSlot,
 } from '../../lib/data';
 import { useGoogleTranslate } from '../../lib/hooks';
-import { TrainingActionButtons } from './TrainingActionButtons';
-import { TrainingDescription } from './TrainingDescription';
+import { BookButton } from '../BookButton';
 
 export type TrainingCardProps = {
     id: number;

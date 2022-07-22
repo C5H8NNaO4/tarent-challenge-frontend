@@ -1,9 +1,11 @@
 import { Grid } from '@mui/material';
 import { FunctionComponent, useContext } from 'react';
-import { nameMatches, tokenMatches } from '../../lib/util';
-import { stateContext, useAppState } from '../../provider/StateProvider';
-import { useSetting } from '../Settings';
+
 import { TrainingCard, TrainingCardProps } from './TrainingCard';
+
+import { tokenMatches } from '../../lib/util';
+import { stateContext } from '../../provider/StateProvider';
+import { useSetting } from '../Settings';
 
 type TrainingGridProps = {
     data: TrainingCardProps[] | null;

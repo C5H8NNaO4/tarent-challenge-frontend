@@ -1,12 +1,11 @@
+import { CardHeader, TextField } from '@mui/material';
 import { useContext } from 'react';
 import { titleCase } from 'title-case';
-import { CardHeader, TextField } from '@mui/material';
 
-import { EditModeButton } from '../EditModeButton';
-
+import { Permissions } from '../../lib/permissions';
 import { hasPermission } from '../../lib/util';
 import { stateContext } from '../../provider/StateProvider';
-import { Permissions } from '../../lib/permissions';
+import { EditModeButton } from '../EditModeButton';
 
 interface TrainingCardHeaderProps {
     name: string;

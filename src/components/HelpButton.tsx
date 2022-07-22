@@ -1,28 +1,21 @@
-import {
-    ArrowUpwardOutlined,
-    HelpOutline,
-    KeyboardArrowDown,
-} from '@mui/icons-material';
+import { HelpOutline, KeyboardArrowDown } from '@mui/icons-material';
 import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
-    Card,
     CardContent,
-    CardHeader,
     Chip,
     Drawer,
     IconButton,
-    List,
-    ListItem,
-    ListItemText,
     Typography,
 } from '@mui/material';
 import { useState } from 'react';
-import { SettingsMenu, SettingsMenuButton } from '../pages/SettingsPage';
+
 import { BookButton } from './BookButton';
 import { EditModeButton } from './EditModeButton';
 import { SessionButton } from './LoginButton';
+
+import { SettingsMenuButton } from '../pages/SettingsPage';
 
 export const HelpButton = () => {
     const [open, setOpen] = useState(false);

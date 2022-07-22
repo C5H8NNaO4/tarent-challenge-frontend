@@ -3,11 +3,11 @@ import { Chip, Menu, TextField } from '@mui/material';
 import {
     LocalizationProvider,
     StaticDateTimePicker,
-    StaticTimePicker,
 } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { format, parse } from 'date-fns';
 import { useContext, useState } from 'react';
+
 import { useBookings } from '../lib/data';
 import { hasBooked } from '../lib/util';
 import { stateContext } from '../provider/StateProvider';
