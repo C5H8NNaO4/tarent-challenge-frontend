@@ -1,4 +1,5 @@
 import { Atom, atom } from 'jotai';
+
 import { IReducerState } from '../types';
 
 /** Initial state for the composed reducer */
@@ -8,6 +9,7 @@ export const initialState: IReducerState = {
     },
     search: '',
     toasts: [],
+    draft: false,
 };
 
 /** Contains all atoms used to store settings. */

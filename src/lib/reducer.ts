@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Actions, IReducerAction, IReducerState, Toast, User } from '../types';
 
 /** Compose reducers. */
@@ -39,7 +40,7 @@ export const sessionReducer: React.Reducer<
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { session, ...rest } = state;
     const { type, value } = action;
-    console.log('Session Reducer', action);
+
     switch (type) {
         case Actions.LOGIN: {
             const newUser = value;
@@ -76,4 +77,24 @@ export const toastReducer: React.Reducer<
     }
 };
 
-export default compose(searchReducer, sessionReducer, toastReducer);
+export const uiReducer: React.Reducer<
+    IReducerState,
+    IReducerAction<undefined>
+> = (state, action) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { draft, ...rest } = state;
+    const { type } = action;
+
+    switch (type) {
+        case Actions.SHOW_DRAFT: {
+            return { draft: true, ...rest };
+        }
+        case Actions.HIDE_DRAFT: {
+            return { draft: false, ...rest };
+        }
+        default:
+            return state;
+    }
+};
+
+export default compose(searchReducer, sessionReducer, toastReducer, uiReducer);

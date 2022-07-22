@@ -1,13 +1,11 @@
 import i18n from 'i18next';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import LanguageDetector from 'i18next-browser-languagedetector';
 import numeral from 'numeral';
+import { initReactI18next } from 'react-i18next';
+
 import 'numeral/locales/de';
 import 'numeral/locales/fr';
 import 'numeral/locales/es';
-
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 import * as resources from '../locale';
 

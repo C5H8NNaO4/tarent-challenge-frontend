@@ -1,11 +1,12 @@
-import { ArrowDownward } from '@mui/icons-material';
 import axios, { AxiosError } from 'axios';
 import { useCallback, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Login, ShowErrorMessage, ShowSuccessMessage } from './actions';
+import { generateApiPath } from './util';
+
 import { stateContext } from '../provider/StateProvider';
 import { User } from '../types';
-import { Login, ShowErrorMessage, ShowSuccessMessage } from './actions';
-import { generateApiPath, handleAxiosError } from './util';
 
 export const useRestoreSession = (
     username: string,

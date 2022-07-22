@@ -8,6 +8,8 @@ export enum Actions {
     LOGOUT = 'LOGOUT',
     SHOW_TOAST = 'SHOW_TOAST',
     HIDE_TOAST = 'HIDE_TOAST',
+    SHOW_DRAFT = 'SHOW_DRAFT',
+    HIDE_DRAFT = 'HIDE_DRAFT',
 }
 
 export type SearchAppBarProps = AppBarProps & {
@@ -41,26 +43,24 @@ export type IFilterState = {
     filter: { [index: string]: boolean };
     inclusive: boolean;
 };
-
 export interface IReducerAction<V> {
     type: Actions;
     value: V;
 }
-
 export interface ISearchState {
     search: string;
 }
-
 export interface ISessionState {
     session: {
         user: User | null;
     };
 }
-
 export interface IToastsState {
     toasts: Toast[];
 }
-
+export interface IDraftState {
+    draft: boolean;
+}
 export interface User {
     id: number;
     name: string;
@@ -87,13 +87,15 @@ export interface FailureMessage {
 export interface IReducerState
     extends ISearchState,
         ISessionState,
-        IToastsState {}
+        IToastsState,
+        IDraftState {}
 
 export type FilterMenuProps = {
     values: string[];
     anchorEl: HTMLAnchorElement;
     onClose: React.MouseEventHandler<HTMLElement>;
 };
+
 export type BranchMenuProps = {
     anchorEl: HTMLAnchorElement;
     onClose: React.MouseEventHandler<HTMLElement>;

@@ -1,9 +1,12 @@
 import { AxiosError } from 'axios';
 import levenshtein from 'fast-levenshtein';
 import numeral from 'numeral';
-import { Booking, FailureMessage, User } from '../types';
+
 import { ShowErrorMessage } from './actions';
 import { Permissions } from './permissions';
+
+import { API_KEY } from '../config';
+import { Booking, FailureMessage, User } from '../types';
 
 export const tokenMatches = (
     search: string,
@@ -74,4 +77,30 @@ export const isAnonymousUser = (user: User | null) => {
 
 export const getLanguageCurrencySymbol = () => {
     return numeral(0).format('$').slice(2);
+};
+
+export const translate = async (
+    text: string,
+    { from, to }: { from?: string; to: string }
+) => {
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+
+    url += `&q=${encodeURI(text)}`;
+    if (from) {
+        url += `&source=${from}`;
+    }
+    url += `&target=${to}`;
+
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+    });
+    const json = await response.json();
+
+    const { translatedText } = json.data.translations[0];
+
+    return { text: translatedText };
 };

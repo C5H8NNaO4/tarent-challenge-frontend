@@ -1,18 +1,24 @@
-import { useAtom, Atom } from 'jotai';
-import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Convert } from 'easy-currencies';
+import { useAtom, Atom, atom, PrimitiveAtom } from 'jotai';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
+// Instantiates a client
+
+import { ShowErrorMessage } from './actions';
+import { translate } from './util';
+
+import { stateContext } from '../provider/StateProvider';
 import { BooleanFlagMap } from '../types';
 
 const map: BooleanFlagMap = {};
 
 export const useLocalStorage = (
     name: string,
-    atom: Atom<any>,
+    storageAtom: Atom<any>,
     defaultValue: any
 ): [any, (v: any) => void] => {
-    const [value, setValue] = useAtom(atom as any);
+    const [value, setValue] = useAtom(storageAtom as any);
     useEffect(() => {
         const storedValue = localStorage[name];
 
@@ -52,10 +58,12 @@ const currencies: Record<string, string> = {
     fr: 'EUR',
 };
 export const useConvertCurrency = (amount: number) => {
-    const { i18n } = useTranslation();
+    const {
+        i18n: { language },
+    } = useTranslation();
     const [value, setValue] = useState<number | null>(null);
 
-    const targetCurrency = currencies[i18n.language];
+    const targetCurrency = currencies[language];
 
     const convert = useCallback(async () => {
         if (targetCurrency === 'EUR') {
@@ -70,7 +78,84 @@ export const useConvertCurrency = (amount: number) => {
             const converted = await convert();
             setValue(converted);
         })();
-    }, [amount, i18n.language]);
+    }, [amount, language]);
 
     return value ?? amount;
+};
+
+const translationCache: Record<string, Record<string, string | null>> = {};
+const cacheTranslation = (
+    text: string,
+    language: string,
+    translation: string | null
+) => {
+    translationCache[text] = translationCache[text] || {};
+    translationCache[text][language] = translation;
+};
+
+const atoms: Record<string, PrimitiveAtom<string | null>> = {};
+export const useGoogleTranslate = (
+    text: string,
+    { from = 'en', placeholder = '...' }
+) => {
+    const translationAtom = useMemo(
+        // eslint-disable-next-line
+        () => atoms[text] || (atoms[text] = atom<string | null>(null)),
+        [text]
+    );
+    const [translated, setTranslated] = useAtom(translationAtom);
+    const {
+        i18n: { language },
+    } = useTranslation();
+    const { dispatch } = useContext(stateContext);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTranslated(null);
+        setLoading(true);
+    }, [language]);
+
+    useEffect(() => {
+        /**
+         * We don't need to translate if source and target language are the same.
+         */
+        if (language === from) {
+            setTranslated(text);
+            setLoading(false);
+            return;
+        }
+
+        /**
+         * If there are multiple uses of this hook with the same text, we don't want to perform an unneccesary request.
+         * The state of the atom is shared between all uses of the hook.
+         * The first use of the hook fetches the result and shares it with all other uses of the hook.
+         */
+        if (typeof (translationCache[text] || {})[language] !== 'undefined') {
+            setTranslated(translationCache[text][language]);
+            setLoading(false);
+            return;
+        }
+
+        (async () => {
+            try {
+                cacheTranslation(text, language, null);
+                const result = await translate(text, {
+                    to: language,
+                });
+                /**
+                 * We cache all translations so future uses of the hook don't need to perform a network request if it has been translated before.
+                 */
+                cacheTranslation(text, language, result.text);
+                setTranslated(result.text);
+                setLoading(false);
+            } catch (e) {
+                dispatch(ShowErrorMessage((e as unknown as Error).message));
+            }
+        })();
+    }, [text, language]);
+
+    return {
+        text: translated === null ? placeholder : translated,
+        loading,
+    };
 };

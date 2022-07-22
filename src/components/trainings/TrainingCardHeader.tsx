@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { titleCase } from 'title-case';
-import { CardHeader } from '@mui/material';
+import { CardHeader, TextField } from '@mui/material';
 
 import { EditModeButton } from '../EditModeButton';
 
@@ -12,16 +12,48 @@ interface TrainingCardHeaderProps {
     name: string;
     trainer: string;
     onActionClick: React.MouseEventHandler;
+    onTitleChange: (text: string) => void;
+    onTrainerChange: (text: string) => void;
+    onDescriptionChange: (text: string) => void;
     editMode: boolean;
+    draft: boolean;
 }
 export const TrainingCardHeader: React.FC<TrainingCardHeaderProps> = ({
     name,
     trainer,
     onActionClick,
     editMode,
+    onTitleChange,
+    onTrainerChange,
+    draft,
 }) => {
     const { state } = useContext(stateContext);
-    return (
+    return editMode ? (
+        <CardHeader
+            title={
+                <TextField
+                    label="Title"
+                    onChange={(e) => onTitleChange(e.target.value)}
+                    fullWidth
+                    value={name}
+                />
+            }
+            subheader={
+                <TextField
+                    label="Trainer"
+                    onChange={(e) => onTrainerChange(e.target.value)}
+                    value={trainer}
+                    sx={{ mt: 1 }}
+                />
+            }
+            action={
+                hasPermission(state.session?.user, Permissions.DEL_SLOT) &&
+                !draft && (
+                    <EditModeButton onClick={onActionClick} active={editMode} />
+                )
+            }
+        />
+    ) : (
         <CardHeader
             title={titleCase(name)}
             subheader={titleCase(trainer)}

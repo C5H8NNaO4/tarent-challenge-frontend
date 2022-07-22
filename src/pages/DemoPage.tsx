@@ -8,6 +8,7 @@ import { AppSnackBar } from '../components/AppSnackBar';
 import { useTrainings } from '../lib/data';
 import { useRestoreSession } from '../lib/session';
 import { stateContext } from '../provider/StateProvider';
+import { AddTrainingFAB } from '../components/AddTrainingFAB';
 
 export const DemoPage: FunctionComponent = () => {
     const { loading, data } = useTrainings();
@@ -17,6 +18,7 @@ export const DemoPage: FunctionComponent = () => {
             {loading && <LinearProgress variant="indeterminate" />}
             <TrainingGrid data={data} />
             <AppSnackBar />
+            <AddTrainingFAB />
         </ErrorBoundary>
     );
 };

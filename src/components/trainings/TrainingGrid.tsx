@@ -29,6 +29,21 @@ export const TrainingGrid: FunctionComponent<TrainingGridProps> = (props) => {
                     </Grid>
                 );
             })}
+            {state.draft && (
+                <Grid item xs={12} md={6} lg={4} xl={3}>
+                    <TrainingCard
+                        id={data.length}
+                        name=""
+                        trainer=""
+                        availableTimeSlots={[]}
+                        duration={45}
+                        slots={10}
+                        cost={150}
+                        description=""
+                        draft
+                    />
+                </Grid>
+            )}
         </Grid>
     );
 };

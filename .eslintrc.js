@@ -27,6 +27,27 @@ module.exports = {
     },
     plugins: ['react', '@typescript-eslint', 'prettier'],
     rules: {
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'builtin',
+                    'external',
+                    'internal',
+                    'sibling',
+                    'parent',
+                    'index',
+                    'unknown',
+                ],
+                'newlines-between': 'always',
+                alphabetize: {
+                    /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
+                    order: 'asc',
+                    /* ignore case. Options: [true, false] */
+                    caseInsensitive: true,
+                },
+            },
+        ],
         'import/no-extraneous-dependencies': [
             'error',
             { devDependencies: true },

@@ -47,3 +47,17 @@ export const HideToast = (toast: Toast | null) => {
         value: toast,
     };
 };
+
+export const ShowDraftTrainingCard = () => {
+    return {
+        type: Actions.SHOW_DRAFT,
+        value: null,
+    };
+};
+
+export const HideDraftTrainingCard = () => {
+    return {
+        type: Actions.HIDE_DRAFT,
+        value: null,
+    };
+};
