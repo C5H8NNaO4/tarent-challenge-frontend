@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { LanguageIcon } from './Icons';
 
 import * as resources from '../locale';

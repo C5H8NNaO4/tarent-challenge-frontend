@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+
 import { useLogout } from '../lib/session';
 
 export const LogoutButton = () => {

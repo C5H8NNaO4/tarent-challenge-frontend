@@ -1,4 +1,5 @@
 import { Chip, Grid, TextField } from '@mui/material';
+
 import { useBookings } from '../../lib/data';
 import { CostChip } from '../CostChip';
 import { DurationIcon, UserIcon } from '../Icons';

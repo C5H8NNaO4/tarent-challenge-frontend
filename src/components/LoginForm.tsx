@@ -8,6 +8,7 @@ import {
 import { Box } from '@mui/system';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { useLogin } from '../lib/session';
 
 export const LoginForm = () => {
@@ -23,14 +24,14 @@ export const LoginForm = () => {
             <CardContent>
                 <TextField
                     fullWidth
-                    label={t('Username')}
+                    label={t('USERNAME')}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <Box sx={{ mt: 1 }} />
                 <TextField
                     fullWidth
                     type="password"
-                    label={t('Password')}
+                    label={t('PASSWORD')}
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </CardContent>

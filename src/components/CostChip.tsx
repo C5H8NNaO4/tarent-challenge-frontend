@@ -1,9 +1,11 @@
 import { Chip, Tooltip } from '@mui/material';
 import numeral from 'numeral';
 import { useTranslation } from 'react-i18next';
+
+import { CostIcon } from './Icons';
+
 import { useConvertCurrency } from '../lib/hooks';
 import { getLanguageCurrencySymbol } from '../lib/util';
-import { CostIcon } from './Icons';
 
 interface CostChipProps {
     cost: number;

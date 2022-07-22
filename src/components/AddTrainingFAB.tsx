@@ -1,6 +1,7 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Fab } from '@mui/material';
 import { useContext } from 'react';
+
 import { ShowDraftTrainingCard } from '../lib/actions';
 import { Permissions } from '../lib/permissions';
 import { hasPermission } from '../lib/util';

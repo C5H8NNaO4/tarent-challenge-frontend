@@ -7,16 +7,14 @@ import {
     MenuItem,
 } from '@mui/material';
 import React, { FunctionComponent, useState } from 'react';
+
 import { SettingsIcon } from '../components/Icons';
 import {
     BackgroundSetting,
     DarkModeOsSetting,
     DarkModeSetting,
     SettingListItem,
-    useSetting,
 } from '../components/Settings';
-import { useLocalStorage } from '../lib/hooks';
-import { atoms } from '../lib/static';
 
 export const Settings = () => {
     return (
@@ -66,7 +64,6 @@ export const SettingsMenu: FunctionComponent<Menu> = ({
     anchorEl,
     onClose,
 }) => {
-    const open = Boolean(anchorEl);
     return (
         <Menu open={Boolean(anchorEl)} anchorEl={anchorEl} onClose={onClose}>
             <MenuItem>
